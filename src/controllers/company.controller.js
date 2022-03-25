@@ -24,7 +24,8 @@ const createCompany = rescue(async (req, res) => {
 
   if (req.route.path === "/company/register") {
     const token = jwt.sign({ email: req.body.email });
-    return res.status(201).json({ token });
+    const created = await companyService.createCompany(user);
+    return res.status(201).json({ token, result: created });
   }
 
   const companyCreated = await companyService.createCompany(user);

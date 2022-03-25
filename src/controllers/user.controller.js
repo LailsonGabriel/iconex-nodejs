@@ -24,7 +24,8 @@ const createUser = rescue(async (req, res) => {
 
   if (req.route.path === "/user/register") {
     const token = jwt.sign({ email: req.body.email });
-    return res.status(201).json({ token });
+    const created = await userService.createUser(user);
+    return res.status(201).json({ token, result: created });
   }
 
   const userCreated = await userService.createUser(user);
