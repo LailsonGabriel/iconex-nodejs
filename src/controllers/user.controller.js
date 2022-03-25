@@ -39,4 +39,4 @@ const deleteUser = rescue(async (req, res) => {
   res.status(201).json({ message: "Usuário Deletado!" });
 });
 
-export { getById, createUser, updateUser, deleteUser };
+module.exports = { getById, createUser, updateUser, deleteUser };
