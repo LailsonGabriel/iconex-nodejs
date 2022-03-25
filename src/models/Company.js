@@ -46,3 +46,5 @@ const Company = (sequelize, DataTypes) => {
 
   return Company;
 };
+
+module.exports = Company;
