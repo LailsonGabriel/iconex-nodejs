@@ -1,6 +1,9 @@
-import { getCompanyByEmail, getUserByEmail } from "../services/Login.services";
+const {
+  getCompanyByEmail,
+  getUserByEmail,
+} = require("../services/Login.services");
 
-const loginUserMiddleware = async (req, res, next) => {
+const userMiddleware = async (req, res, next) => {
   const { email, password } = req.body;
 
   const user = await getUserByEmail(email);
@@ -11,7 +14,7 @@ const loginUserMiddleware = async (req, res, next) => {
   next();
 };
 
-const loginCompanyMiddleware = async (req, res, next) => {
+const companyMiddleware = async (req, res, next) => {
   const { email, password } = req.body;
 
   const company = await getCompanyByEmail(email);
@@ -22,4 +25,4 @@ const loginCompanyMiddleware = async (req, res, next) => {
   next();
 };
 
-module.exports = { loginCompanyMiddleware, loginUserMiddleware };
+module.exports = { companyMiddleware, userMiddleware };

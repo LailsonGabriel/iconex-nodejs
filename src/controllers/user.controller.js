@@ -1,4 +1,4 @@
-import rescue from "express-rescue";
+const rescue = require("express-rescue");
 import {
   getUserById,
   createUser as create,
