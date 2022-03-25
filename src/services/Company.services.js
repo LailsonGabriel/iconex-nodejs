@@ -1,4 +1,4 @@
-import Company from "../models/Company";
+const { Company } = require("../models");
 
 const getCompanyById = async (id) => {
   const companies = await Company.findOne({ where: { id } });
