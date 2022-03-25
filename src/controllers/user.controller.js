@@ -1,15 +1,10 @@
 const rescue = require("express-rescue");
-import {
-  getUserById,
-  createUser as create,
-  updateUser as update,
-  deleteUser as userDelete,
-} from "../services/User.services";
+const userService = require("../services/User.services");
 
 const getById = rescue(async (req, res) => {
   const { id } = req.params;
 
-  const user = await getUserById(id);
+  const user = await userService.getUserById(id);
 
   res.status(200).json(user);
 });
@@ -18,7 +13,7 @@ const updateUser = rescue(async (req, res) => {
   const body = req.body;
   const { id } = req.params;
 
-  const userUpdated = await update(body, id);
+  const userUpdated = await userService.updateUser(body, id);
 
   res.status(201).json(userUpdated);
 });
@@ -26,7 +21,7 @@ const updateUser = rescue(async (req, res) => {
 const createUser = rescue(async (req, res) => {
   const user = req.body;
 
-  const userCreated = await create(user);
+  const userCreated = await userService.createUser(user);
 
   res.status(201).json(userCreated);
 });
@@ -34,7 +29,7 @@ const createUser = rescue(async (req, res) => {
 const deleteUser = rescue(async (req, res) => {
   const { id } = req.params;
 
-  await userDelete(id);
+  await userService.deleteUser(id);
 
   res.status(201).json({ message: "Usuário Deletado!" });
 });

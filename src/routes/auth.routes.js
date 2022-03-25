@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-import { login } from "../controllers/auth.controller";
+const login = require("../controllers/auth.controller");
 const {
   companyMiddleware,
   userMiddleware,

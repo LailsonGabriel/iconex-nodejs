@@ -1,15 +1,10 @@
 const rescue = require("express-rescue");
-import {
-  createCompany as create,
-  updateCompany as update,
-  getCompanyById as getById,
-  deleteCompany as deleteCmp,
-} from "../services/CompanyServices";
+const companyService = require("../services/Company.services");
 
 const getCompanyById = rescue(async (req, res) => {
   const { id } = req.params;
 
-  const company = await getById(id);
+  const company = await companyService.getCompanyById(id);
 
   res.status(200).json(company);
 });
@@ -18,7 +13,7 @@ const updateCompany = rescue(async (req, res) => {
   const body = req.body;
   const { id } = req.params;
 
-  const companyUpdated = await update(body, id);
+  const companyUpdated = await companyService.updateCompany(body, id);
 
   res.status(201).json(companyUpdated);
 });
@@ -26,7 +21,7 @@ const updateCompany = rescue(async (req, res) => {
 const createCompany = rescue(async (req, res) => {
   const user = req.body;
 
-  const companyCreated = await create(user);
+  const companyCreated = await companyService.createCompany(user);
 
   res.status(201).json(companyCreated);
 });
@@ -34,7 +29,7 @@ const createCompany = rescue(async (req, res) => {
 const deleteCompany = rescue(async (req, res) => {
   const { id } = req.params;
 
-  await deleteCmp(id);
+  await companyService.deleteCompany(id);
 
   res.status(201).json({ message: "Usuário Deletado!" });
 });

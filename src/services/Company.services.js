@@ -22,4 +22,9 @@ const deleteCompany = async (id) => {
   await Company.destroy({ where: { id } });
 };
 
-export { createCompany, updateCompany, getCompanyById, deleteCompany };
+module.exports = {
+  createCompany,
+  updateCompany,
+  getCompanyById,
+  deleteCompany,
+};

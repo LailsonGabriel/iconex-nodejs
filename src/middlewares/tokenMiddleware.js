@@ -1,4 +1,4 @@
-import jwt from "../../utils/jwt";
+const jwt = require("../../utils/jwt");
 
 const verifyToken = async (req, res, next) => {
   const token = req.headers.authorization;
