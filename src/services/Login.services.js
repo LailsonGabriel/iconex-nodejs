@@ -9,6 +9,7 @@ const getCompanyByEmail = async (email) => {
 
 const getUserByEmail = async (email) => {
   const user = await User.findOne({ where: { email }, raw: true });
+  console.log(user);
   return user;
 };
 

@@ -8,11 +8,11 @@ const login = rescue(async (req, res) => {
   const token = jwt.sign(email);
 
   if (req.route.path === "/user/login") {
-    const user = loginService.getUserByEmail(email);
+    const user = await loginService.getUserByEmail(email);
     return res.status(200).json({ token, result: user });
   }
 
-  const company = loginService.getCompanyByEmail(email);
+  const company = await loginService.getCompanyByEmail(email);
 
   res.status(200).json({ token, result: company });
 });
