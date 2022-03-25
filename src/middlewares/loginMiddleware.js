@@ -5,9 +5,9 @@ const {
 
 const userMiddleware = async (req, res, next) => {
   const { email, password } = req.body;
-
+  console.log(email);
   const user = await getUserByEmail(email);
-  if (user.some((usr) => usr.email === email && usr.password === password)) {
+  if (!user || user.email !== email || user.password !== password) {
     return res.status(402).json({ message: "Email ou senha inválidos" });
   }
 
@@ -18,7 +18,7 @@ const companyMiddleware = async (req, res, next) => {
   const { email, password } = req.body;
 
   const company = await getCompanyByEmail(email);
-  if (company.some((cmp) => cmp.email === email && cmp.password === password)) {
+  if (!company || company.email !== email || company.password !== password) {
     return res.status(402).json({ message: "Email ou senha inválidos" });
   }
 

@@ -41,6 +41,7 @@ const Company = (sequelize, DataTypes) => {
     },
     {
       timestamps: false,
+      modelName: "Companies",
     },
   );
 

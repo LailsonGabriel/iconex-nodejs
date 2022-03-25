@@ -6,7 +6,12 @@ const {
   userMiddleware,
 } = require("../middlewares/loginMiddleware");
 
-router.post("/user/login", companyMiddleware, login);
-router.post("/company/login", userMiddleware, login);
+const { createCompany } = require("../controllers/company.controller");
+const { createUser } = require("../controllers/user.controller");
 
-export default router;
+router.post("/user/login", userMiddleware, login);
+router.post("/company/login", companyMiddleware, login);
+router.post("/company/register", createCompany);
+router.post("/user/register", createUser);
+
+module.exports = router;

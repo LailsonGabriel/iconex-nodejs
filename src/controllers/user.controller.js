@@ -1,4 +1,5 @@
 const rescue = require("express-rescue");
+const jwt = require("../utils/jwt");
 const userService = require("../services/User.services");
 
 const getById = rescue(async (req, res) => {
@@ -20,6 +21,11 @@ const updateUser = rescue(async (req, res) => {
 
 const createUser = rescue(async (req, res) => {
   const user = req.body;
+
+  if (req.route.path === "/user/register") {
+    const token = jwt.sign({ email: req.body.email });
+    return res.status(201).json({ token });
+  }
 
   const userCreated = await userService.createUser(user);
 

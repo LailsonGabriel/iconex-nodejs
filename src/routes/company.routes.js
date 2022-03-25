@@ -13,4 +13,4 @@ router.post("/", createCompany);
 router.put("/:id", verifyToken, updateCompany);
 router.delete("/:id", verifyToken, deleteCompany);
 
-export default router;
+module.exports = router;

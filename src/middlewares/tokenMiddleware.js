@@ -1,4 +1,4 @@
-const jwt = require("../../utils/jwt");
+const jwt = require("../utils/jwt");
 
 const verifyToken = async (req, res, next) => {
   const token = req.headers.authorization;
@@ -8,8 +8,8 @@ const verifyToken = async (req, res, next) => {
   }
 
   try {
-    const user = jwt.verify(token);
-    req.body.user = user;
+    jwt.verify(token);
+
     next();
   } catch (err) {
     return res.status(401).send({ error: "Invalid token" });

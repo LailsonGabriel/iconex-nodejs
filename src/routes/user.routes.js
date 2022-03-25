@@ -2,15 +2,15 @@ const verifyToken = require("../middlewares/tokenMiddleware");
 const express = require("express");
 const router = express.Router();
 const {
-  getCompanyById,
-  updateCompany,
-  createCompany,
-  deleteCompany,
-} = require("../controllers/company.controller");
+  getById,
+  createUser,
+  updateUser,
+  deleteUser,
+} = require("../controllers/user.controller");
 
-router.get("/:id", verifyToken, getCompanyById);
-router.post("/", createCompany);
-router.put("/:id", verifyToken, updateCompany);
-router.delete("/:id", verifyToken, deleteCompany);
+router.get("/:id", verifyToken, getById);
+router.post("/", createUser);
+router.put("/:id", verifyToken, updateUser);
+router.delete("/:id", verifyToken, deleteUser);
 
-export default router;
+module.exports = router;

@@ -9,8 +9,7 @@ const getCompanyByEmail = async (email) => {
 
 const getUserByEmail = async (email) => {
   const user = await User.findOne({ where: { email }, raw: true });
-
   return user;
 };
 
-export { getCompanyByEmail, getUserByEmail };
+module.exports = { getCompanyByEmail, getUserByEmail };
